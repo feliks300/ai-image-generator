@@ -588,6 +588,33 @@ document.getElementById('generate-btn').addEventListener('click', async () => {
         resultDiv.innerHTML = `Ошибка: ${data.message}`;
     }
 });
+        <script>
+document.getElementById('generate-btn').addEventListener('click', async () => {
+    const prompt = document.getElementById('prompt').value;
+    const resultDiv = document.getElementById('result');
+    
+    resultDiv.innerHTML = "Генерация...";
+    
+    const response = await fetch("https://stablediffusionapi.com/api/v3/text2img", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            prompt: prompt,
+            key: "ВАШ_КЛЮЧ", // Оставьте пустым для теста
+            samples: 1,
+            width: 512
+        })
+    });
+    
+    const data = await response.json();
+    
+    if (data.status === "success") {
+        resultDiv.innerHTML = `<img src="${data.output[0]}" width="512">`;
+    } else {
+        resultDiv.innerHTML = `Ошибка: ${data.message}`;
+    }
+});
+</script>
 </script>
     </script>
 </body>
