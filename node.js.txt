@@ -1,0 +1,6 @@
+// Замените пустой key на полученный здесь:
+// https://stablediffusionapi.com/dashboard
+body: JSON.stringify({
+    ...,
+    key: "wHe5AJsp0dUAziKtMmlH2rGKDdgzppV3A09N5TB3znrb5kLQM6XCjplWrw7I"
+})
